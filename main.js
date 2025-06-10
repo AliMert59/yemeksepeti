@@ -438,7 +438,7 @@ $(document).ready(function () {
     loadReviews();
 });
 
-// Siparişi Tamamla butonuna tıklama olayı
+// Siparişi Tamamla butonuna tıklama 
 $(document).on('click', '#complete-order-btn', function() {
     fetch('http://localhost:3000/api/orders', {
         method: 'POST',
