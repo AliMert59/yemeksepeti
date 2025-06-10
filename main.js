@@ -117,7 +117,7 @@ $(document).ready(function ($) {
 
     // API'den menü verilerini çek
     function loadMenu() {
-        fetch('http://localhost:3000/api/menu')
+        fetch('https://onlinefoodservice.onrender.com/api/menu')
             .then(response => response.json())
             .then(menuItems => {
                 const menuContainer = $('#menu-dish');
@@ -164,7 +164,7 @@ $(document).ready(function ($) {
 
     // API'den şef verilerini çek
     function loadChefs() {
-        fetch('http://localhost:3000/api/chefs')
+        fetch('https://onlinefoodservice.onrender.com/api/chefs')
             .then(response => response.json())
             .then(chefs => {
                 const teamContainer = $('.team-slider .swiper-wrapper');
@@ -255,7 +255,7 @@ jQuery(window).on('load', function () {
 
 // Sepet sayısını güncelle
 function updateCartCount() {
-    fetch('http://localhost:3000/api/cart')
+    fetch('https://onlinefoodservice.onrender.com/api/cart')
         .then(res => res.json())
         .then(cartItems => {
             $('#cart-count').text(cartItems.length);
@@ -264,7 +264,7 @@ function updateCartCount() {
 
 // Sepeti getir ve modalda göster (toplamı güncelle)
 function showCart() {
-    fetch('http://localhost:3000/api/cart')
+    fetch('https://onlinefoodservice.onrender.com/api/cart')
         .then(res => res.json())
         .then(cartItems => {
             let html = '';
@@ -304,7 +304,7 @@ function showToast(message) {
 // Sepete ekle butonlarına tıklama olayı
 $(document).on('click', '.add-to-cart-btn', function() {
     const menuId = $(this).data('id');
-    fetch('http://localhost:3000/api/cart', {
+    fetch('https://onlinefoodservice.onrender.com/api/cart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ menu_id: menuId, quantity: 1 })
@@ -332,7 +332,7 @@ $(document).ready(function () {
 // Sepetten ürün silme olayı
 $(document).on('click', '.remove-from-cart-btn', function() {
     const cartId = $(this).data('id');
-    fetch(`http://localhost:3000/api/cart/${cartId}`, {
+    fetch(`https://onlinefoodservice.onrender.com/api/cart/${cartId}`, {
         method: 'DELETE'
     })
     .then(res => res.json())
@@ -376,7 +376,7 @@ $('#register-form').on('submit', function(e) {
     e.preventDefault();
     const email = $('#register-email').val();
     const password = $('#register-password').val();
-    fetch('http://localhost:3000/api/register', {
+    fetch('https://onlinefoodservice.onrender.com/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -397,7 +397,7 @@ $('#login-form').on('submit', function(e) {
     e.preventDefault();
     const email = $('#login-email').val();
     const password = $('#login-password').val();
-    fetch('http://localhost:3000/api/login', {
+    fetch('https://onlinefoodservice.onrender.com/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -414,7 +414,7 @@ $('#login-form').on('submit', function(e) {
 });
 
 function loadReviews() {
-    fetch('http://localhost:3000/api/reviews')
+    fetch('https://onlinefoodservice.onrender.com/api/reviews')
         .then(res => res.json())
         .then(reviews => {
             const container = $('#reviews-container');
@@ -440,7 +440,7 @@ $(document).ready(function () {
 
 // Siparişi Tamamla butonuna tıklama 
 $(document).on('click', '#complete-order-btn', function() {
-    fetch('http://localhost:3000/api/orders', {
+    fetch('https://onlinefoodservice.onrender.com/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_id: null })
